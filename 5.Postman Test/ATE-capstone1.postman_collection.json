@@ -1,0 +1,249 @@
+{
+	"info": {
+		"_postman_id": "b4f903be-ffb6-4d63-a6d1-6adcefec73c2",
+		"name": "ATE-capstone1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32313081"
+	},
+	"item": [
+		{
+			"name": "Retrieve the list of all products in the store",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate message is 'OK' in JSON response\", function() {\r",
+							"    pm.expect(pm.response.json().message).to.eql(\"14 Shoes Fetched Successfully.\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST_URL}}/get-shoes",
+					"host": [
+						"{{HOST_URL}}"
+					],
+					"path": [
+						"get-shoes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve the list of all registered users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate message is 'OK' in JSON response\", function() {\r",
+							"    pm.expect(pm.response.json().message).to.eql(\"3 Users Fetched Successfully.\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST_URL}}/get-users",
+					"host": [
+						"{{HOST_URL}}"
+					],
+					"path": [
+						"get-users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add the product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Validate message is 'OK' in JSON response\", function() {\r",
+							"    pm.expect(pm.response.json().message).to.eql(\"SampleShoe Added Successfully.\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{HOST_URL}}/add-shoe?id=101&image=image_url&name=SampleShoe&category=Running&sizes=9&price=1000",
+					"host": [
+						"{{HOST_URL}}"
+					],
+					"path": [
+						"add-shoe"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "101"
+						},
+						{
+							"key": "image",
+							"value": "image_url"
+						},
+						{
+							"key": "name",
+							"value": "SampleShoe"
+						},
+						{
+							"key": "category",
+							"value": "Running"
+						},
+						{
+							"key": "sizes",
+							"value": "9"
+						},
+						{
+							"key": "price",
+							"value": "1000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete the product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Validate message is 'OK' in JSON response\", function() {\r",
+							"    pm.expect(pm.response.json().message).to.eql(\"Shoe with ID 101 Deleted Successfully.\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{HOST_URL}}/delete-shoe?id=101",
+					"host": [
+						"{{HOST_URL}}"
+					],
+					"path": [
+						"delete-shoe"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "101"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update the product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate message is 'OK' in JSON response\", function() {\r",
+							"    pm.expect(pm.response.json().message).to.eql(\"BlueWave Running shoes Updated Successfully.\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 201,\r\n    \"name\": \"Updated Shoe Name\",\r\n    \"category\": \"Updated Category\",\r\n    \"sizes\": \"8,9,10\",\r\n    \"price\": 1500,\r\n    \"image\": \"updated_image_url\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST_URL}}/update-shoe?id=101&image=1.png&name=BlueWave Running shoes&category=SportsShoes&sizes=7,8,9&price=1500",
+					"host": [
+						"{{HOST_URL}}"
+					],
+					"path": [
+						"update-shoe"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "101"
+						},
+						{
+							"key": "image",
+							"value": "1.png"
+						},
+						{
+							"key": "name",
+							"value": "BlueWave Running shoes"
+						},
+						{
+							"key": "category",
+							"value": "SportsShoes"
+						},
+						{
+							"key": "sizes",
+							"value": "7,8,9"
+						},
+						{
+							"key": "price",
+							"value": "1500"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
